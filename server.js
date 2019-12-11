@@ -6,8 +6,8 @@ var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-// Require all models
-var db = require("./models");
+// Require all models - 
+// var db = require("./models");
 
 var PORT = 3000;
 
@@ -44,5 +44,4 @@ app.listen(PORT, function() {
 
 
 // get scrape button working early
-
 // bootswatch cdns

@@ -1,22 +1,22 @@
-// NECESSARY?
 var express = require("express");
 var app = express.Router();
 
 // Import the model to use its database functions.
-var db = require("../models/job.js");
+var db = require("../models");
 
 
-// A GET route for scraping the echoJS website
+// GET ROUTE FOR SCRAPING TECHNICAL.LY WEBSITE
+
 app.get("/scrape", function(req, res) {
-  // First, we grab the body of the html with axios
+  // grab body of html w/ axios
   axios
     .get("https://technical.ly/philly/jobs/?city=philadelphia")
     .then(function(response) {
-      // Then, we load that into cheerio and save it to $ for a shorthand selector
+      // load into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
 
       // DO I WANT AN OBJECT OR AN ARRAY??
-      var result = {};
+      var result = [];
 
       $(".job-single").each(function(i, element) {
         var title = $(element)
@@ -28,10 +28,11 @@ app.get("/scrape", function(req, res) {
         var logoLink = $(element)
           .find("img")
           .attr("src");
+        // var location = $(element)
+        // .find(".job-info").children()
+            // how to access location?
 
-        // how to access location?
-
-        // Save these results in an object that we'll push into the results array we defined earlier
+        // Save these results in an object to push into results array
         results.push({
           title: title,
           link: link,
@@ -40,7 +41,7 @@ app.get("/scrape", function(req, res) {
 
         console.log(results);
 
-        // Create a new Job Listing using the `result` object built from scraping
+        // Create a new Job Listing using the `results` object built from scraping
         db.JobListing.create(result)
           .then(function(dbListing) {
             // View the added result in the console

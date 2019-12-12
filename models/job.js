@@ -27,7 +27,7 @@ var JobSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Job = mongoose.model("Job", JobSchema);
+var Job = mongoose.model("JobListing", JobSchema);
 
 // Export the Job model
 module.exports = Job;

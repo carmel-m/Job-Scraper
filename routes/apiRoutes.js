@@ -1,13 +1,16 @@
 var express = require("express");
-var app = express.Router();
+var router = express.Router();
 
 // Import the model to use its database functions.
 var db = require("../models");
 
+// Our scraping tools
+var axios = require("axios");
+var cheerio = require("cheerio");
 
 // GET ROUTE FOR SCRAPING TECHNICAL.LY WEBSITE
 
-app.get("/scrape", function(req, res) {
+router.get("/scrape", function(req, res) {
   // grab body of html w/ axios
   axios
     .get("https://technical.ly/philly/jobs/?city=philadelphia")
@@ -42,7 +45,7 @@ app.get("/scrape", function(req, res) {
         console.log(results);
 
         // Create a new Job Listing using the `results` object built from scraping
-        db.JobListing.create(result)
+        db.Job.create(result)
           .then(function(dbListing) {
             // View the added result in the console
             console.log(dbListing);
@@ -58,4 +61,4 @@ app.get("/scrape", function(req, res) {
     });
 });
 
-module.exports = app;
+module.exports = router;

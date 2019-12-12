@@ -2,12 +2,7 @@ var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-// Our scraping tools
-var axios = require("axios");
-var cheerio = require("cheerio");
-
-// Require all models - 
-// var db = require("./models");
+var routes = require("./routes/htmlRoutes.js")
 
 var PORT = 3000;
 
@@ -23,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
+
+app.use(routes);
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
@@ -41,7 +38,6 @@ app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
   });
   
-
 
 // get scrape button working early
 // bootswatch cdns

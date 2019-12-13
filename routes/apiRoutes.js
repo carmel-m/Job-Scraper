@@ -19,7 +19,6 @@ router.get("/scrape", function(req, res) {
       var $ = cheerio.load(response.data);
 
       $(".job-single").each(function(i, element) {
-        
         var results = {};
 
         results.title = $(element)
@@ -29,12 +28,12 @@ router.get("/scrape", function(req, res) {
         results.link = $(element)
           .parent()
           .attr("href");
-          
+
         results.logoLink = $(element)
           .find("img")
           .attr("src");
 
-          console.log(results);
+        console.log(results);
 
         // var location = $(element)
         // .find(".job-info").children()
@@ -46,7 +45,6 @@ router.get("/scrape", function(req, res) {
             console.log(dbListing);
           })
           .catch(function(err) {
-            // If an error occurred, log it
             console.log(err);
           });
       });

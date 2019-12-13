@@ -54,4 +54,17 @@ router.get("/scrape", function(req, res) {
     });
 });
 
+router.put("/saved/:id", function(req, res) {
+  console.log(req.params.id);
+  db.Job.findOneAndUpdate({ _id: req.params.id }, { saved: true }).then(function(data) {
+    res.json(data);
+  })
+});
+
+router.put("/unsave/:id", function(req, res) {
+  db.Job.findOneAndUpdate({ _id: req.params.id }, { saved: false }).then(function(data) {
+    res.json(data);
+  })
+});
+
 module.exports = router;

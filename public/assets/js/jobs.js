@@ -2,76 +2,106 @@
 
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-
   $("#scrape-jobs").on("click", function() {
-    console.log("scrape button clicked");
+    console.log("SCRAPE button clicked");
 
     $.ajax("/scrape", {
-      type: "GET",
+      type: "GET"
     }).then(function() {
       console.log("scraped jobs");
       location.reload();
     });
   });
 
+  // GO TO SAVED JOBS
   $("#saved-jobs").on("click", function() {
-    console.log("save button clicked");
-
+    console.log("SAVED button clicked");
     $.ajax("/saved", {
-      type: "GET",
+      type: "GET"
     }).then(function() {
       location.reload();
     });
   });
 
+  // GO TO HOME PAGE
+  $("#job-listings").on("click", function() {
+    console.log("HOME button clicked");
+    $.ajax("/", {
+      type: "GET"
+    }).then(function() {
+      location.reload();
+    });
+  });
+
+  // SAVE/UNSAVE A JOB
+  $(".save-unsave").on("click", function(event) {
+    event.preventDefault();
+    console.log("SAVE/DELETE button clicked");
+
+    var dbID = $(this).attr("db-id");
+    console.log(dbID);
+
+    var savedStatus = $(this).attr("saved");
+
+    if (savedStatus === "false") {
+      $.ajax("/saved/" + dbID, {
+        type: "PUT"
+      }).then(function() {
+        location.reload();
+      });
+    } else {
+      $.ajax("/unsave/" + dbID, {
+        type: "PUT"
+      }).then(function() {
+        location.reload();
+      });
+    }
+  });
 });
 
+// Send the POST request.
+//  $.ajax("/api/cats", {
+//   type: "POST",
+//   data: newCat
+// }).then(
+//   function() {
+//     console.log("created new cat");
+//     // Reload the page to get the updated list
+//     location.reload();
+//   }
+// );
 
-  // Send the POST request.
-  //  $.ajax("/api/cats", {
-  //   type: "POST",
-  //   data: newCat
-  // }).then(
-  //   function() {
-  //     console.log("created new cat");
-  //     // Reload the page to get the updated list
-  //     location.reload();
-  //   }
-  // );
+// Send the PUT request.
+//   $.ajax("/api/cats/" + id, {
+//     type: "PUT",
+//     data: newSleepState
+//   }).then(
+//     function() {
+//       console.log("changed sleep to", newSleep);
+//       // Reload the page to get the updated list
+//       location.reload();
+//     }
+//   );
+// });
 
-  // Send the PUT request.
-  //   $.ajax("/api/cats/" + id, {
-  //     type: "PUT",
-  //     data: newSleepState
-  //   }).then(
-  //     function() {
-  //       console.log("changed sleep to", newSleep);
-  //       // Reload the page to get the updated list
-  //       location.reload();
-  //     }
-  //   );
-  // });
+// $(".create-form").on("submit", function(event) {
+//   // Make sure to preventDefault on a submit event.
+//   event.preventDefault();
 
-  // $(".create-form").on("submit", function(event) {
-  //   // Make sure to preventDefault on a submit event.
-  //   event.preventDefault();
+//   var newCat = {
+//     name: $("#ca").val().trim(),
+//     sleepy: $("[name=sleepy]:checked").val().trim()
+//   };
 
-  //   var newCat = {
-  //     name: $("#ca").val().trim(),
-  //     sleepy: $("[name=sleepy]:checked").val().trim()
-  //   };
-
-  //   // Send the POST request.
-  //   $.ajax("/api/cats", {
-  //     type: "POST",
-  //     data: newCat
-  //   }).then(
-  //     function() {
-  //       console.log("created new cat");
-  //       // Reload the page to get the updated list
-  //       location.reload();
-  //     }
-  //   );
-  // });
-
-
+//   // Send the POST request.
+//   $.ajax("/api/cats", {
+//     type: "POST",
+//     data: newCat
+//   }).then(
+//     function() {
+//       console.log("created new cat");
+//       // Reload the page to get the updated list
+//       location.reload();
+//     }
+//   );
+// });

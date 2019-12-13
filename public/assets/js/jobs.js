@@ -2,18 +2,30 @@
 
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-  $("#scrape-jobs").on("click", function(event) {
-    // event.preventDefault();
-    console.log("button clicked");
+
+  $("#scrape-jobs").on("click", function() {
+    console.log("scrape button clicked");
 
     $.ajax("/scrape", {
-      type: "POST",
-      // data: jobs
+      type: "GET",
     }).then(function() {
       console.log("scraped jobs");
       location.reload();
     });
   });
+
+  $("#saved-jobs").on("click", function() {
+    console.log("save button clicked");
+
+    $.ajax("/saved", {
+      type: "GET",
+    }).then(function() {
+      location.reload();
+    });
+  });
+
+});
+
 
   // Send the POST request.
   //  $.ajax("/api/cats", {
@@ -63,4 +75,3 @@ $(function() {
   // });
 
 
-});

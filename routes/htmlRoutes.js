@@ -8,18 +8,35 @@ var router = express.Router();
 // Import the model to use its database functions.
 var db = require("../models");
 
+// var axios = require("axios");
+// var cheerio = require("cheerio");
+
 router.get("/", function(req, res) {
 
-    db.Job.find({})
+    db.Job.find({ saved: false })
     .then(function(data) {
 
-    //   var hbsObject = {
-    //     jobs: data
-    //   };
+      var hbsObject = {
+        jobs: data
+      };
+      console.log(hbsObject);
+      res.render("index", hbsObject);
+    // res.json(data);
+    });
+  });
+
+  router.get("/saved", function(req, res) {
+
+    db.Job.find({ saved: true })
+    .then(function(data) {
+
+      var hbsObject = {
+        jobs: data
+      };
       console.log(data);
     //   console.log(hbsObject);
-    //   res.render("index", hbsObject);
-    res.json(data);
+      res.render("index", hbsObject);
+    // res.json(data);
     });
   });
 

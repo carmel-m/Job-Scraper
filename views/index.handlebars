@@ -1,45 +1,32 @@
+<!-- JUMBOTRON/HEADER -->
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+        <h1 class="display-4">Technical.ly Job Scraper</h1>
+    </div>
+    <br>
+    <h4>The latest Philadelphia tech jobs</h4>
+</div>
+
 <div class="container">
 
-    <h1>Job Scraper</h1>
-
-    <div class="row">
-        <h2>Get the latest Philly tech jobs posted on Technical.ly</h2>
-        <br>
-
-{{!-- NEED SCRAPE BUTTON AND SAVE BUTTON --}}
-        <form class="create-form">
-            <div class="form-group">
-                <label for="burger">Burger name:</label>
-                <input type="text" id="burger-name" name="name">
-            </div>
-            <button type="submit" id="order-burger">Order burger</button>
-        </form>
+    {{!-- NEED SCRAPE BUTTON AND SAVE BUTTON --}}
+    <div class="row"><br>
+        <span><button id="scrape-jobs">Scrape</button>
+            <button id="scrape-jobs">My Saved Jobs</button></span>
     </div>
+    <br><br>
 
-{{!-- 
     <div class="row">
+        <div class="col-sm-12">
+            <h4>New Jobs:</h4>
 
-        <div class="col-sm-6">
-            <h2>Burgers that have not been eaten</h2>
-            <ul>
-                {{#each burgers}}
-                {{#unless devoured}}
-                {{> burgers/burger-block devoured=true}}
-                {{/unless}}
-                {{/each}}
-            </ul>
-        </div>
+            {{#each jobs}}
+            <hr>
+            <h5>{{title}}</h5>
+            <p>Full job posting: <a href="{{link}}">{{link}}</a></p>
+            <img class="img-fluid" src="{{logoLink}}">
+            {{/each}}
 
-        <div class="col-sm-6">
-            <h2>Burgers that have been eaten</h2>
-            <ul>
-                {{#each burgers}}
-                {{#if devoured}}
-                {{> burgers/burger-block devoured=false}}
-                {{/if}}
-                {{/each}}
-            </ul>
         </div>
-    </div> --}}
-    
+    </div>
 </div>

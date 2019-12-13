@@ -18,34 +18,29 @@ router.get("/scrape", function(req, res) {
       // load into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
 
-      // DO I WANT AN OBJECT OR AN ARRAY??
-      var result = [];
-
       $(".job-single").each(function(i, element) {
-        var title = $(element)
+        
+        var results = {};
+
+        results.title = $(element)
           .parent()
           .attr("title");
-        var link = $(element)
+
+        results.link = $(element)
           .parent()
           .attr("href");
-        var logoLink = $(element)
+          
+        results.logoLink = $(element)
           .find("img")
           .attr("src");
+
+          console.log(results);
+
         // var location = $(element)
         // .find(".job-info").children()
-            // how to access location?
-
-        // Save these results in an object to push into results array
-        results.push({
-          title: title,
-          link: link,
-          logoLink: logoLink
-        });
-
-        console.log(results);
 
         // Create a new Job Listing using the `results` object built from scraping
-        db.Job.create(result)
+        db.Job.create(results)
           .then(function(dbListing) {
             // View the added result in the console
             console.log(dbListing);

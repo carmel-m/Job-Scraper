@@ -2,7 +2,8 @@ var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-var routes = require("./routes/htmlRoutes.js")
+var htmlRoutes = require("./routes/htmlRoutes.js")
+var apiRoutes = require("./routes/apiRoutes.js")
 
 var PORT = 3000;
 
@@ -19,7 +20,8 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
-app.use(routes);
+app.use(htmlRoutes);
+app.use(apiRoutes);
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
@@ -30,7 +32,7 @@ app.set("view engine", "handlebars");
 // Connect to the Mongo DB
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/jobsdb";
 mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true
+  useNewUrlParser: true, useUnifiedTopology: true
 });
 
 // Start the server

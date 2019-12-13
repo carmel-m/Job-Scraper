@@ -18,7 +18,11 @@ var JobSchema = new Schema({
   logoLink: {
     type: String,
     required: true,
-    unique: true
+    // unique: true
+  },
+  saved: {
+    type: Boolean,
+    default: false
   },
   comment: {
       type: Schema.Types.ObjectId,
@@ -27,7 +31,7 @@ var JobSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Job = mongoose.model("JobListing", JobSchema);
+var Job = mongoose.model("Job", JobSchema);
 
 // Export the Job model
 module.exports = Job;

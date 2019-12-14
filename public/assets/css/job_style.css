@@ -1,4 +1,4 @@
-.container {
+/* .container {
     display: block;
     position: relative;
     padding-left: 35px;
@@ -9,13 +9,15 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  } 
+  }  */
 
-.image-fluid {
+
+/* 
+.img-fluid {
   display: block; 
   margin-left: auto;
   margin-right: auto; 
   width: 80%;
   height: 80%;
   border-radius: 8px;
-  }
+  } */

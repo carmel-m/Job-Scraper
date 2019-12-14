@@ -11,13 +11,12 @@
 
     {{!-- NEED SCRAPE BUTTON AND SAVE BUTTON --}}
     <div class="row"><br>
-        <span><button id="scrape-jobs">Scrape</button>
+        <span><button class="btn btn-outline-info" id="scrape-jobs">Scrape</button>
 
-            <a href="/saved">My Saved Jobs</a>
-            <a href="/">Back to Job Listings</a>
+            <a class="btn btn-outline-info" href="/saved">My Saved Jobs</a>
+            <a class="btn btn-outline-info" href="/">Back to Job Listings</a>
 
-            {{!-- <button id="job-listings">Back to Job Listings</button> --}}
-            </span>
+        </span>
     </div>
     <br><br>
 
@@ -40,8 +39,26 @@
     </div>
 
 
-    {{!-- CARD OPTION --}}
-    {{!-- 
+    {{!-- <div class="card-deck">
+        {{#each jobs}}
+        <div class="card">
+            <img class="card-img-top" src="{{logoLink}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-text">Full job posting: <a href="{{link}}">{{link}}</a></p>
+                <button db-id="{{_id}}" class="save-unsave"
+                    saved="{{#if saved}}true{{else}}false{{/if}}">{{#if saved}}Remove From Saved List{{else}}Save
+                    Job{{/if}}</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div> --}}
+
+
+
+{{!-- CARD OPTION --}}
+{{!-- 
 {{#each jobs}}
 <div class="row text-center">
     <div class="col-lg-3 col-md-6 mb-4">

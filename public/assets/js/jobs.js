@@ -21,8 +21,9 @@ $(function() {
     $.ajax("/saved", {
       type: "GET"
     }).then(function() {
+
       console.log("trying to go to saved page");
-      // location.reload();
+      location.reload();
     });
   });
 
@@ -34,8 +35,9 @@ $(function() {
     $.ajax("/", {
       type: "GET"
     }).then(function() {
+      
       console.log("trying to go home");
-      // location.reload();
+      location.reload();
     });
   });
 

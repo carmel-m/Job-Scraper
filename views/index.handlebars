@@ -12,7 +12,12 @@
     {{!-- NEED SCRAPE BUTTON AND SAVE BUTTON --}}
     <div class="row"><br>
         <span><button id="scrape-jobs">Scrape</button>
-            <button id="saved-jobs">My Saved Jobs</button><button id="job-listings">Back to Job Listings</button></span>
+
+            <a href="/saved">My Saved Jobs</a>
+            <a href="/">Back to Job Listings</a>
+
+            {{!-- <button id="job-listings">Back to Job Listings</button> --}}
+            </span>
     </div>
     <br><br>
 
@@ -26,7 +31,9 @@
             <p>Full job posting: <a href="{{link}}">{{link}}</a></p>
             <img class="img-fluid" src="{{logoLink}}" alt="Company Logo">
 
-            <button db-id="{{_id}}" class="save-unsave" saved="{{#if saved}}true{{else}}false{{/if}}">{{#if saved}}Remove From Saved List{{else}}Save Job{{/if}}</button>
+            <button db-id="{{_id}}" class="save-unsave"
+                saved="{{#if saved}}true{{else}}false{{/if}}">{{#if saved}}Remove From Saved List{{else}}Save
+                Job{{/if}}</button>
             {{/each}}
 
         </div>

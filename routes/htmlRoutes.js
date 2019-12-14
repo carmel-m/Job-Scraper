@@ -9,9 +9,9 @@ router.get("/", function(req, res) {
     var hbsObject = {
       jobs: data
     };
-    // console.log(hbsObject);
+       
     res.render("index", hbsObject);
-    // res.json(data);
+    // console.log(hbsObject);
   });
 });
 
@@ -20,11 +20,10 @@ router.get("/saved", function(req, res) {
     var hbsObject = {
       jobs: data
     };
-    console.log("saved working");
-    //   console.log(hbsObject);
+    // console.log("saved working");
+  
     res.render("index", hbsObject);
-    // res.json(data);
-    console.log(hbsObject);
+    // console.log(hbsObject);
   });
 });
 

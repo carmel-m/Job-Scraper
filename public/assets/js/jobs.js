@@ -13,34 +13,6 @@ $(function() {
     });
   });
 
-  // GO TO SAVED JOBS - CLICK WORKING BUT NOT REDIRECTING
-  $("#saved-jobs").on("click", function(event) {
-    event.preventDefault();
-    console.log("SAVED button clicked");
-
-    $.ajax("/saved", {
-      type: "GET"
-    }).then(function() {
-
-      console.log("trying to go to saved page");
-      location.reload();
-    });
-  });
-
-  // GO TO HOME PAGE - CLICK WORKING BUT NOT REDIRECTING
-  $("#job-listings").on("click", function(event) {
-    event.preventDefault();
-    console.log("HOME button clicked");
-
-    $.ajax("/", {
-      type: "GET"
-    }).then(function() {
-      
-      console.log("trying to go home");
-      location.reload();
-    });
-  });
-
   // SAVE/UNSAVE A JOB
   $(".save-unsave").on("click", function(event) {
     event.preventDefault();
@@ -65,6 +37,36 @@ $(function() {
       });
     }
   });
+
+  // GO TO SAVED JOBS - CLICK WORKING BUT NOT REDIRECTING
+  // $("#saved-jobs").on("click", function(event) {
+  //   event.preventDefault();
+  //   console.log("SAVED button clicked");
+
+  //   $.ajax("/saved", {
+  //     type: "GET"
+  //   }).then(function() {
+
+  //     console.log("trying to go to saved page");
+  //     // location.reload();
+  //   });
+  // });
+
+  // GO TO HOME PAGE - CLICK WORKING BUT NOT REDIRECTING
+  // $("#job-listings").on("click", function(event) {
+  //   event.preventDefault();
+  //   console.log("HOME button clicked");
+
+  //   $.ajax("/", {
+  //     type: "GET"
+  //   }).then(function() {
+      
+  //     console.log("trying to go home");
+  //     // location.reload();
+  //   });
+  // });
+
+
 });
 
 // Send the POST request.

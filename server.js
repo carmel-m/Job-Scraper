@@ -5,7 +5,7 @@ var mongoose = require("mongoose");
 var htmlRoutes = require("./routes/htmlRoutes.js")
 var apiRoutes = require("./routes/apiRoutes.js")
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();

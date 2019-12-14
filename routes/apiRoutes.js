@@ -35,9 +35,6 @@ router.get("/scrape", function(req, res) {
 
         console.log(results);
 
-        // var location = $(element)
-        // .find(".job-info").children()
-
         // Create a new Job Listing using the `results` object built from scraping
         db.Job.create(results)
           .then(function(dbListing) {

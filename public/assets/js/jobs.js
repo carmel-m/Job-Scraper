@@ -13,23 +13,29 @@ $(function() {
     });
   });
 
-  // GO TO SAVED JOBS
-  $("#saved-jobs").on("click", function() {
+  // GO TO SAVED JOBS - CLICK WORKING BUT NOT REDIRECTING
+  $("#saved-jobs").on("click", function(event) {
+    event.preventDefault();
     console.log("SAVED button clicked");
+
     $.ajax("/saved", {
       type: "GET"
     }).then(function() {
-      location.reload();
+      console.log("trying to go to saved page");
+      // location.reload();
     });
   });
 
-  // GO TO HOME PAGE
-  $("#job-listings").on("click", function() {
+  // GO TO HOME PAGE - CLICK WORKING BUT NOT REDIRECTING
+  $("#job-listings").on("click", function(event) {
+    event.preventDefault();
     console.log("HOME button clicked");
+
     $.ajax("/", {
       type: "GET"
     }).then(function() {
-      location.reload();
+      console.log("trying to go home");
+      // location.reload();
     });
   });
 

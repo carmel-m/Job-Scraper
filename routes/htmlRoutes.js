@@ -21,7 +21,7 @@ router.get("/saved", function(req, res) {
       jobs: data
     };
     //   console.log(hbsObject);
-    res.render("index", hbsObject);
+    res.render("saved", hbsObject);
     // res.json(data);
   });
 });

@@ -1,39 +1,63 @@
 <!-- JUMBOTRON/HEADER -->
 <div class="jumbotron jumbotron-fluid text-center">
-    <div class="container">
+    <div class="container title-box">
         <h1 class="display-4">Technical.ly Job Scraper</h1>
+
+        <h3>The latest Philadelphia tech jobs</h3>
     </div>
-    <br>
-    <h4>The latest Philadelphia tech jobs</h4>
+    <br><br><br>
+    <button class="btn btn-light btn-lg" id="scrape-jobs">Scrape</button>
 </div>
 
 <div class="container">
-
-    {{!-- NEED SCRAPE BUTTON AND SAVE BUTTON --}}
     <div class="row"><br>
-        <span><button class="btn btn-outline-info" id="scrape-jobs">Scrape</button>
-
-            <a class="btn btn-outline-info" href="/saved">My Saved Jobs</a>
-            <a class="btn btn-outline-info" href="/">Back to Job Listings</a>
-
+        <span id="two-buttons">
+            <a class="btn btn-dark" href="/saved">My Saved Jobs</a>
+            <a class="btn btn-dark" href="/">Back to Job Listings</a>
         </span>
     </div>
     <br><br>
 
     <div class="row">
         <div class="col-sm-12">
+            {{!-- <h4>NEWEST JOBS</h4> --}}
+            <hr>
+            {{#each jobs}}
+            <div class="row job-listing">
+                <div class="col-sm-4">
+                    <h5>{{title}}</h5>
+                </div>
+                <div class="col-sm-4">
+                    <img class="img-fluid img-thumbnail" src="{{logoLink}}" alt="Company Logo">
+                </div>
+                <div class="col-sm-4">
+                    <a class="btn btn-outline-dark" href="{{link}}">Go to full job listing</a>
+                    <br>
+                    <br>
+                    <button db-id="{{_id}}" class="save-unsave btn btn-outline-dark"
+                        saved="{{#if saved}}true{{else}}false{{/if}}">{{#if saved}}Remove from saved jobs{{else}}Add to
+                        saved jobs{{/if}}</button>
 
-            <h4>NEW JOBS:</h4>
+                </div>
+            </div>
+
+            <hr>
+            {{/each}}
+
+
+            {{!-- 
             {{#each jobs}}
             <hr>
             <h5>{{title}}</h5>
+            <br>
             <p>Full job posting: <a href="{{link}}">{{link}}</a></p>
-            <img class="img-fluid" src="{{logoLink}}" alt="Company Logo">
+
+            <img class="img-fluid img-thumbnail" src="{{logoLink}}" alt="Company Logo">
 
             <button db-id="{{_id}}" class="save-unsave"
                 saved="{{#if saved}}true{{else}}false{{/if}}">{{#if saved}}Remove From Saved List{{else}}Save
                 Job{{/if}}</button>
-            {{/each}}
+            {{/each}} --}}
 
         </div>
     </div>
@@ -57,8 +81,8 @@
 
 
 
-{{!-- CARD OPTION --}}
-{{!-- 
+    {{!-- CARD OPTION --}}
+    {{!-- 
 {{#each jobs}}
 <div class="row text-center">
     <div class="col-lg-3 col-md-6 mb-4">
@@ -75,3 +99,7 @@
     </div>
 </div>
 {{/each}} --}}
+
+
+
+    {{!-- Image by <a href="https://pixabay.com/users/12019-12019/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=209731">David Mark</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=209731">Pixabay</a> --}}

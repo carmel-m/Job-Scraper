@@ -1,23 +1,51 @@
-/* .container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }  */
+body {
+font-family: 'Poppins', sans-serif;
+}
 
+.jumbotron {
+    background-image: url("../img/philly-crop.jpg");
+    font-family: 'Poiret One', cursive;
+    text-align: center;
+    color: white;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
 
-/* 
-.img-fluid {
-  display: block; 
-  margin-left: auto;
-  margin-right: auto; 
-  width: 80%;
-  height: 80%;
+.title-box {
+  border: 1px solid black;
+  background-color: black;
   border-radius: 8px;
-  } */
+  width: 60%;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.job-listing {
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.btn-light {
+font-size: 20px;
+}
+
+.img-thumbnail {
+  display: block;
+  margin: 0 auto;
+}
+
+#two-buttons {
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+/* === FONTS === */
+
+/* font-family: 'Poppins', sans-serif; */
+
+/* font-family: 'Poiret One', cursive; */
+
+/* font-family: 'Hammersmith One', sans-serif; */
